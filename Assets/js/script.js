@@ -44,6 +44,7 @@ function displayTimeBlocks() {
       .appendTo(div);
     var textarea = $("<textarea>").addClass("col-8").appendTo(div);
     var button = $("<button>").addClass("col-1 saveBtn").appendTo(div);
+    var iEL = $("<i>").addClass("fas fa-save").appendTo(button);
   }
   section.appendTo(container);
 }
