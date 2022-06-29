@@ -31,9 +31,9 @@ function init() {
 }
 
 function displayTimeBlocks() {
-  console.log(time_blocks.length);
+  // console.log(time_blocks.length);
   for (let i = 0; i < time_blocks.length; i++) {
-    console.log(time_blocks[i].time);
+    // console.log(time_blocks[i].time);
     var digit = time_blocks[i].digit;
     var div = $("<div>")
       .addClass("row time-block")
@@ -43,16 +43,38 @@ function displayTimeBlocks() {
       .addClass("col-2 hour")
       .text(time_blocks[i].time)
       .appendTo(div);
-    var textarea = $("<textarea>").addClass("col-8").appendTo(div);
+    var textarea = $("<textarea>")
+      .attr("id", "time_id_" + i)
+      .addClass("col-8")
+      .appendTo(div);
     changeBackgroundColor(textarea, digit);
-    var button = $("<button>").addClass("col-1 saveBtn").appendTo(div);
+
+    var button = $("<button>")
+      .addClass("col-1 saveBtn")
+      .appendTo(div)
+      .attr("id", i)
+      .on("click", function (e) {
+        e.preventDefault();
+        time_blocks[i].note = $("#time_id_" + i).val();
+        console.log(time_blocks[i]);
+        console.log(time_blocks);
+      });
     var iEL = $("<i>").addClass("fas fa-save").appendTo(button);
   }
   section.appendTo(container);
 }
+// const saveBlock = (i) => {
+//   // console.log("hello");?
+//   // console.log(textarea[0].id);
+//   let id = i;
+//   console.log(id);
 
+//   console.log($("#time_id_" + id));
+//   // time_blocks[i].note = $("#" + id).val();
+//   console.log(time_blocks);
+// };
 const changeBackgroundColor = (textarea, digit) => {
-  console.log(hour, digit);
+  // console.log(hour, digit);
   if (hour === digit) {
     textarea.addClass("present");
   } else if (digit < hour) {
