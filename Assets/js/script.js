@@ -92,7 +92,7 @@ const changeBackgroundColor = (textarea, digit) => {
   }
 };
 init();
-localStorage.removeItem("work_dayschedule", 0);
+
 /**
  * BUG:
  * data persists but when any time_block is changed all the values of note get set to ""
