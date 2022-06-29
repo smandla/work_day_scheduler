@@ -1,4 +1,3 @@
-var data = JSON.parse(localStorage.getItem("work_dayschedule"));
 // console.log(data);
 console.log("hello!");
 var formattedDate = moment().format("MMMM DD, YYYY");
@@ -6,7 +5,7 @@ console.log(formattedDate);
 var container = $(".container");
 var currentDay = $("#currentDay");
 var section = $("<section>");
-
+var data;
 var hour = moment().hour();
 //9 - 5 object
 var time_blocks = [
@@ -22,6 +21,7 @@ var time_blocks = [
 ];
 
 function init() {
+  data = JSON.parse(localStorage.getItem("work_dayschedule")) || time_blocks;
   currentDay.text(formattedDate);
 
   //show one row of the time blocks with 3 columns
@@ -92,4 +92,4 @@ const changeBackgroundColor = (textarea, digit) => {
   }
 };
 init();
-// // localStorage.removeItem("work_dayschedule", 0);
+localStorage.removeItem("work_dayschedule");
