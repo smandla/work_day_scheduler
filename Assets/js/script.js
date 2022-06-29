@@ -50,9 +50,9 @@ function displayTimeBlocks() {
       .addClass("col-8")
       .appendTo(div);
     changeBackgroundColor(textarea, digit);
-    // if (data[i].note) {
-    //   textarea.text(data[i].note);
-    // }
+    if (data[i].note) {
+      textarea.text(data[i].note);
+    }
     var button = $("<button>")
       .addClass("col-1 saveBtn")
       .appendTo(div)
@@ -60,12 +60,9 @@ function displayTimeBlocks() {
       .on("click", function (e) {
         e.preventDefault();
         time_blocks[i].note = $("#time_id_" + i).val();
+        // console.log(localStorage.getItem("wo"))
         console.log(time_blocks);
-        console.log(time_blocks[i]);
-        // var newData = [...data, time_blocks[i]];
-
         localStorage.setItem("work_dayschedule", JSON.stringify(time_blocks));
-        console.log(localStorage.getItem("work_dayschedule"));
       });
     var iEL = $("<i>").addClass("fas fa-save").appendTo(button);
   }
@@ -92,8 +89,4 @@ const changeBackgroundColor = (textarea, digit) => {
   }
 };
 init();
-
-/**
- * BUG:
- * data persists but when any time_block is changed all the values of note get set to ""
- */
+// localStorage.removeItem("work_dayschedule", 0);
