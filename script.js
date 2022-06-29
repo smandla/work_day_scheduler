@@ -1,10 +1,12 @@
 var data = JSON.parse(localStorage.getItem("work_dayschedule"));
 // console.log(data);
 console.log("hello!");
+var formattedDate = moment().format("MMMM DD, YYYY");
+console.log(formattedDate);
 var container = $(".container");
 var currentDay = $("#currentDay");
 var section = $("<section>");
-var formattedDate = moment().format("MMMM DD, YYYY");
+
 var hour = moment().hour();
 //9 - 5 object
 var time_blocks = [
