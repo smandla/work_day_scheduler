@@ -1,11 +1,12 @@
 // console.log(data);
 console.log("hello!");
-var formattedDate = moment().format("MMMM DD, YYYY");
+var formattedDate = moment().format("dddd, MMMM DD, YYYY");
 console.log(formattedDate);
 var container = $(".container");
 var currentDay = $("#currentDay");
 var section = $("<section>");
 var data;
+var uData;
 var hour = moment().hour();
 //9 - 5 object
 var time_blocks = [
@@ -21,7 +22,11 @@ var time_blocks = [
 ];
 
 function init() {
-  data = JSON.parse(localStorage.getItem("work_dayschedule")) || time_blocks;
+  data = JSON.parse(localStorage.getItem("work_day_scheduler") || "");
+  // console.log(time_blocks[i].time, data);
+  console.log(data);
+  uData = data;
+  console.log(uData);
   currentDay.text(formattedDate);
 
   //show one row of the time blocks with 3 columns
@@ -53,34 +58,52 @@ function displayTimeBlocks() {
       .addClass("col-8")
       .appendTo(div);
     changeBackgroundColor(textarea, digit);
-    if (data[i].note) {
-      textarea.text(data[i].note);
+
+    if (data) {
+      if (data[i].note) {
+        textarea.text(data[i].note);
+      }
     }
+
     var button = $("<button>")
       .addClass("col-1 saveBtn")
       .appendTo(div)
       .attr("id", i)
       .on("click", function (e) {
         e.preventDefault();
-        time_blocks[i].note = $("#time_id_" + i).val();
-        // console.log(localStorage.getItem("wo"))
+        uData[i].note = $("#time_id_" + i).val();
+
+        console.log($("#time_id_" + i).val());
+
         console.log(time_blocks);
-        localStorage.setItem("work_dayschedule", JSON.stringify(time_blocks));
+
+        localStorage.setItem(
+          time_blocks[i].time,
+          JSON.stringify(time_blocks[i].note)
+        );
+
+        var newData = saveTask(i, uData[i].note);
+        console.log(newData);
+        localStorage.setItem("work_day_scheduler", JSON.stringify(newData));
       });
     var iEL = $("<i>").addClass("fas fa-save").appendTo(button);
   }
+
   section.appendTo(container);
 }
-// // const saveBlock = (i) => {
-// //   // console.log("hello");?
-// //   // console.log(textarea[0].id);
-// //   let id = i;
-// //   console.log(id);
 
-// //   console.log($("#time_id_" + id));
-// //   // time_blocks[i].note = $("#" + id).val();
-// //   console.log(time_blocks);
-// // };
+const saveTask = (i, note) => {
+  const updatedData = uData.map((obj, index) => {
+    if (index === i) {
+      console.log(i, index);
+      return { ...obj, note: note };
+    }
+
+    return obj;
+  });
+  return updatedData;
+};
+
 const changeBackgroundColor = (textarea, digit) => {
   // console.log(hour, digit);
   if (hour === digit) {
@@ -92,4 +115,4 @@ const changeBackgroundColor = (textarea, digit) => {
   }
 };
 init();
-localStorage.removeItem("work_dayschedule");
+// localStorage.removeItem("work_day_scheduler");
