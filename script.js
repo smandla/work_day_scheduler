@@ -22,7 +22,7 @@ var time_blocks = [
 ];
 
 function init() {
-  data = JSON.parse(localStorage.getItem("work_day_scheduler") || "");
+  data = JSON.parse(localStorage.getItem("work_day_scheduler")) || time_blocks;
   // console.log(time_blocks[i].time, data);
   console.log(data);
   uData = data;
