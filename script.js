@@ -22,12 +22,17 @@ var time_blocks = [
 ];
 
 function init() {
-  data = JSON.parse(localStorage.getItem("work_day_scheduler")) || time_blocks;
+  currentDay.text(formattedDate);
+  if (JSON.parse(localStorage.getItem("work_day_scheduler"))) {
+    data = JSON.parse(localStorage.getItem("work_day_scheduler"));
+  } else {
+    data = time_blocks;
+  }
+  // data = JSON.parse(localStorage.getItem("work_day_scheduler")) || time_blocks;
   // console.log(time_blocks[i].time, data);
   console.log(data);
   uData = data;
   console.log(uData);
-  currentDay.text(formattedDate);
 
   //show one row of the time blocks with 3 columns
   /**
