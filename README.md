@@ -14,17 +14,18 @@
 
 ## Description
 
-A work day schedule where the data persists and the user can save anything they would like within each work hour time block.
+A work day schedule where the data persists and the user can save anything they would like within each work hour time block. As long as you save through the button whenever a change is made, your data should be saved! Have fun managing your work day!
 
 ## Technologies
 
 - HTML
 - CSS
-- JavaScript
+- Bootstrap
+- jQuery
 
 ## Deployed Link
 
-[Deployed Link](https://smandla.github.io/javascript_timedquiz/)
+[Deployed Link](https://smandla.github.io/work_day_scheduler/)
 
 ## Usage
 
@@ -34,9 +35,9 @@ A work day schedule where the data persists and the user can save anything they 
 
 ### Code Snippet
 
-![alt text](assets/images/codesnippet.png)
+![alt text](assets/images/codesnippet1.png)
 
-#### Function displays question based on certain variables and updates the look of the UI. For loop that creates buttons for each option.
+#### Code snippet for the time block creation iteration using jQuery to create tag, add classes, and add some styling based on the block we're currently creating.
 
 ## User Information
 
