@@ -1,6 +1,8 @@
 //formatted date using moment
+console.log(moment());
 var formattedDate = moment().format("dddd, MMMM DD, YYYY");
 var hour = moment().hour();
+console.log(hour);
 //grab tags from html
 var container = $(".container");
 var currentDay = $("#currentDay");
@@ -15,11 +17,11 @@ var time_blocks = [
   { time: "10:00", digit: 10, note: "" },
   { time: "11:00", digit: 11, note: "" },
   { time: "12:00", digit: 12, note: "" },
-  { time: "1:00", digit: 1, note: "" },
-  { time: "2:00", digit: 2, note: "" },
-  { time: "3:00", digit: 3, note: "" },
-  { time: "4:00", digit: 4, note: "" },
-  { time: "5:00", digit: 5, note: "" },
+  { time: "1:00", digit: 13, note: "" },
+  { time: "2:00", digit: 14, note: "" },
+  { time: "3:00", digit: 15, note: "" },
+  { time: "4:00", digit: 16, note: "" },
+  { time: "5:00", digit: 17, note: "" },
 ];
 
 /**
